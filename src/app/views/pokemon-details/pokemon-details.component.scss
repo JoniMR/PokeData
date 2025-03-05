@@ -1,0 +1,152 @@
+.pokemon-details-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  align-content: center;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.pokemon-summary {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 40%;
+  margin: 10px;
+}
+
+.pokemon-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokemon-id {
+  color: #f0f0f0;
+  background-color: #222224;
+  border-radius: 10%;
+  padding: 5px 10px;
+}
+
+.pokemon-types {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  margin: 0 5px;
+}
+
+.type-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.main-image {
+  width: 300px;
+  height: auto;
+}
+
+.image-thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.thumbnail {
+  width: 60px;
+  height: auto;
+  margin: 5px;
+}
+
+.pokemon-info {
+  flex: 2;
+  max-width: 30%;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.pokemon-abilities ul,
+.pokemon-basic-info ul {
+  font-size: 16px;
+  background-color: #f0f0f0;
+  margin: 5px 0;
+  border-radius: 5px;
+  padding: 10px 0 10px 10px;
+}
+
+.pokemon-basic-info {
+  margin: 16px 0;
+}
+
+.pokemon-stats {
+  flex: 3;
+  max-width: 30%;
+  margin: 10px 10px 10px 0;
+}
+
+.pokemon-stats p,
+.pokemon-stats ul {
+  margin: 5px 0;
+}
+
+.pokemon-stats ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.pokemon-stats ul li {
+  font-size: 16px;
+  background-color: #f0f0f0;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.stat-bar {
+  display: flex;
+  height: 20px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.stat-filled {
+  background-color: #4caf50;
+}
+
+.stat-empty {
+  background-color: #d3d3d3;
+}
+
+.ability-image,
+.info-image,
+.stats-image {
+  width: 32px;
+  height: 32px;
+  margin-right: 5px;
+}
+
+.pokemon-ability-title,
+.pokemon-basic-info-title,
+.pokemon-stats-title {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .pokemon-details-container {
+    flex-direction: column;
+  }
+
+  .pokemon-summary,
+  .pokemon-info,
+  .pokemon-stats {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+}

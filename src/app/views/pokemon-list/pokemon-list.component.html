@@ -1,0 +1,56 @@
+<div class="header-container">
+  <div class="logo-container">
+    <img src="assets/img/pokedata.png" alt="PokeData" class="logo" />
+  </div>
+</div>
+
+<div class="search-button-container">
+  <div class="search-icon-container" *ngIf="showTable">
+    <div class="search-icon" (click)="toggleSearchBar()">
+      <mat-icon>search</mat-icon>
+    </div>
+  </div>
+  <div class="back-icon-container" *ngIf="!showTable">
+    <div class="back-icon" (click)="backToTable()">
+      <mat-icon>arrow_back</mat-icon>
+    </div>
+  </div>
+</div>
+
+<div class="search-bar-container">
+  <div class="search-bar" *ngIf="showSearchBar">
+    <mat-form-field class="search-form" appearance="outline">
+      <mat-label>Search Pokémon</mat-label>
+      <input
+        matInput
+        [formControl]="searchControl"
+        placeholder="Write the Pokémon's name"
+      />
+      <mat-icon matSuffix *ngIf="searchControl.value" (click)="clearSearch()"
+        >close</mat-icon
+      >
+      <mat-hint *ngIf="searchControl.value?.length < 3"
+        >Please enter at least 3 characters to search</mat-hint
+      >
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="table-container" [ngClass]="{ hidden: !showTable }">
+  <app-pokemon-table></app-pokemon-table>
+</div>
+
+<div class="details-container" [ngClass]="{ hidden: showTable }">
+  <app-pokemon-details
+    *ngIf="selectedPokemonName && !showTable"
+    [pokemonName]="selectedPokemonName"
+  ></app-pokemon-details>
+</div>
+
+<div class="no-results-container" *ngIf="!showTable && !selectedPokemonName">
+  <img
+    src="assets/img/who-is-that-pokemon.png"
+    alt="Who is that Pokémon?"
+    class="no-results-image"
+  />
+</div>

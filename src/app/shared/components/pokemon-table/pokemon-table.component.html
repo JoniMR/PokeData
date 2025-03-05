@@ -1,0 +1,110 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef class="column-id">
+      N.º
+    </mat-header-cell>
+    <mat-cell
+      *matCellDef="let element"
+      [ngClass]="{ skeleton: isLoading }"
+      class="column-id"
+    >
+      {{ isLoading ? "" : "#" + element.id }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="imgUrl">
+    <mat-header-cell *matHeaderCellDef class="column-imgUrl">
+      Image
+    </mat-header-cell>
+    <mat-cell
+      *matCellDef="let element"
+      [ngClass]="{ skeleton: isLoading }"
+      class="column-imgUrl"
+    >
+      <img *ngIf="!isLoading" [src]="element.imgUrl" alt="{{ element.name }}" />
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef class="column-name">
+      Name
+    </mat-header-cell>
+    <mat-cell
+      *matCellDef="let element"
+      [ngClass]="{ skeleton: isLoading }"
+      class="column-name"
+    >
+      {{ isLoading ? "" : (element.name | titlecase) }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <mat-header-cell *matHeaderCellDef class="column-type">
+      Type
+    </mat-header-cell>
+    <mat-cell
+      *matCellDef="let element"
+      [ngClass]="{ skeleton: isLoading }"
+      class="column-type"
+    >
+      <div *ngIf="!isLoading" class="type-container">
+        <ng-container *ngFor="let type of element.type">
+          <div [ngClass]="'icon ' + type">
+            <img
+              [src]="'assets/img/types/' + type + '.svg'"
+              [alt]="type"
+              matTooltip="{{ type | titlecase }}"
+            />
+          </div>
+        </ng-container>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="height">
+    <mat-header-cell *matHeaderCellDef class="column-height">
+      Height
+    </mat-header-cell>
+    <mat-cell
+      *matCellDef="let element"
+      [ngClass]="{ skeleton: isLoading }"
+      class="column-height"
+    >
+      {{ isLoading ? "" : element.height + " cm" }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="weight">
+    <mat-header-cell *matHeaderCellDef class="column-weight">
+      Weight
+    </mat-header-cell>
+    <mat-cell
+      *matCellDef="let element"
+      [ngClass]="{ skeleton: isLoading }"
+      class="column-weight"
+    >
+      {{ isLoading ? "" : element.weight + " kg" }}
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    [ngClass]="{ skeleton: isLoading }"
+    class="pokemon-row"
+    (click)="onRowClicked(row)"
+  ></mat-row>
+</mat-table>
+
+<mat-paginator
+  #paginator
+  (page)="handlePageEvent($event)"
+  [length]="length"
+  [pageSize]="pageSize"
+  [showFirstLastButtons]="true"
+  [pageSizeOptions]="pageSizeOptions"
+  [pageIndex]="pageIndex"
+  [disabled]="disabled"
+  aria-label="Select page"
+>
+</mat-paginator>

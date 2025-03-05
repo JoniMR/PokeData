@@ -1,0 +1,101 @@
+<div *ngIf="pokemonDetails" class="pokemon-details-container">
+  <div class="pokemon-summary">
+    <div class="pokemon-name">
+      <h1>
+        <strong class="pokemon-id">#{{ pokemonDetails.id }}</strong>
+        {{ pokemonDetails.name | titlecase }}
+      </h1>
+    </div>
+
+    <div class="pokemon-types">
+      <ng-container *ngFor="let type of pokemonDetails.types">
+        <div [ngClass]="'icon ' + type">
+          <img
+            [src]="'assets/img/types/' + type + '.svg'"
+            [alt]="type"
+            class="type-icon"
+            matTooltip="{{ type | titlecase }}"
+          />
+        </div>
+      </ng-container>
+    </div>
+    <img
+      class="main-image"
+      [src]="pokemonDetails.sprites.other['official-artwork'].front_default"
+      alt="{{ pokemonDetails.name }}"
+    />
+    <div class="image-thumbnails">
+      <img
+        *ngIf="pokemonDetails?.sprites?.other?.showdown?.front_default"
+        class="thumbnail"
+        [src]="pokemonDetails?.sprites?.other?.showdown?.front_default"
+        alt="{{ pokemonDetails.name }}"
+      />
+      <img
+        *ngIf="pokemonDetails?.sprites?.other?.showdown?.back_default"
+        class="thumbnail"
+        [src]="pokemonDetails?.sprites?.other?.showdown?.back_default"
+        alt="{{ pokemonDetails.name }}"
+      />
+    </div>
+  </div>
+
+  <div class="pokemon-info">
+    <div class="pokemon-abilities">
+      <div class="pokemon-ability-title">
+        <img
+          src="assets/img/ability.png"
+          alt="Abilities"
+          class="ability-image"
+        />
+        <h1>Abilities</h1>
+      </div>
+      <ul>
+        <p *ngFor="let ability of pokemonDetails.abilities">
+          <strong>
+            {{ ability.ability.name | titlecase }}
+          </strong>
+          <span *ngIf="ability.is_hidden">(Hidden)</span>
+        </p>
+      </ul>
+    </div>
+
+    <div class="pokemon-basic-info">
+      <div class="pokemon-basic-info-title">
+        <img src="assets/img/info.png" alt="Info" class="info-image" />
+        <h1>Basic Information</h1>
+      </div>
+      <ul>
+        <p><strong>Height:</strong> {{ pokemonDetails.height }} cm</p>
+        <p><strong>Weight:</strong> {{ pokemonDetails.weight }} kg</p>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pokemon-stats">
+    <div class="pokemon-stats-title">
+      <img src="assets/img/heart.png" alt="Stats" class="stats-image" />
+      <h1>Stats</h1>
+    </div>
+    <ul>
+      <li *ngFor="let stat of pokemonDetails.stats">
+        <div class="stat-bar">
+          <div
+            class="stat-filled"
+            [ngStyle]="{
+              width: getStatPercentage(stat.stat.name, stat.base_stat) + '%'
+            }"
+          ></div>
+          <div
+            class="stat-empty"
+            [ngStyle]="{
+              width:
+                100 - getStatPercentage(stat.stat.name, stat.base_stat) + '%'
+            }"
+          ></div>
+        </div>
+        <span>{{ stat.stat.name | titlecase }}: {{ stat.base_stat }}</span>
+      </li>
+    </ul>
+  </div>
+</div>

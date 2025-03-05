@@ -1,0 +1,133 @@
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #ee1515;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.logo {
+  width: 300px;
+  height: auto;
+  animation: beat 2s infinite;
+}
+
+.search-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #222224;
+}
+
+.search-icon-container,
+.back-icon-container {
+  background-color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  margin-top: -30px;
+  margin-bottom: -30px;
+  border: 10px solid #222224;
+  z-index: 1;
+}
+
+.search-icon,
+.back-icon {
+  background-color: white;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  margin-top: -20px;
+  margin-bottom: -20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.search-icon:hover,
+.back-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.search-icon:active,
+.back-icon:active {
+  transform: scale(0.9);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.search-bar {
+  margin: 40px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.search-form {
+  width: 100%;
+  max-width: 900px;
+}
+
+.table-container {
+  background-color: #f0f0f0;
+}
+
+.no-results-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-results-image {
+  width: 300px;
+  height: auto;
+}
+
+.table-container.hidden,
+.no-results-container.hidden {
+  display: none;
+}
+
+@keyframes beat {
+  0% {
+    transform: scale(0.95);
+  }
+  20% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.95);
+  }
+  60% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.95);
+  }
+}
