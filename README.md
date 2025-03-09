@@ -13,6 +13,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Angular 16 is a powerful and scalable framework for building modern web applications. It offers a robust architecture, strong TypeScript support, and an active community. I have experience working with this version, ensuring best practices and efficient development.
 
+## Architecture Flow
+
+To help visualize the structure and flow of the project, here's a diagram that illustrates the main components and their interactions:
+
+![Flow diagram](src/docs/pokedata%20-%20Flow%20diagram.png)
+
 ## UI & Testing: Angular Material and Jest
 
 This project uses Angular Material for a consistent, modern, and accessible UI design, providing ready-to-use components that enhance development speed and user experience. For testing, Jest is used due to its fast performance, easy configuration, and powerful mocking capabilities, ensuring reliable and maintainable code.
